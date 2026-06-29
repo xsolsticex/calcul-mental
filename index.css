@@ -17,7 +17,9 @@ html {
 h1 {
     padding: 0;
     margin: 0;
-    font-size: 60px !important;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 4rem);
 }
 
 .content {
@@ -31,7 +33,7 @@ h1 {
 
 .result {
     border: 1px solid black;
-    width: 100%;
+   width: min(95vw, 700px);
     height: 8%;
     display: flex;
     justify-content: center;
@@ -48,6 +50,7 @@ h1 {
     grid-template-rows: repeat(7, 1fr);
     gap: 20px;
     position: relative;
+    width: min(95vw, 700px);
 
 }
 
@@ -109,4 +112,45 @@ button {
 
 .validar {
     opacity: 0;
+}
+
+@media (max-width: 1200px) {
+
+    h1 {
+        font-size: 36px !important;
+    }
+
+    .subcontent {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        height: auto;
+        align-items: center;
+    }
+
+    .table {
+        gap:10px;
+        width: 95%;
+    }
+
+    .button {
+        padding: 8px;
+        font-size: 18px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .result {
+        height: 50px;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
 }
