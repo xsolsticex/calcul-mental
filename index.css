@@ -1,0 +1,112 @@
+@font-face {
+    font-family: "LedDisplay";
+    src: url("LedDisplay.ttf");
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: LedDisplay;
+
+    background: linear-gradient(rgb(78, 155, 255) 10%, rgb(235, 195, 195) 90%);
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 60px !important;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.result {
+    border: 1px solid black;
+    width: 100%;
+    height: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.table {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: 20px;
+    position: relative;
+
+}
+
+.button {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.subcontent {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    height: 80%;
+}
+
+.right {
+    display: flex;
+    justify-items: end;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+button {
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-family: LedDisplay;
+    color: black;
+}
+
+.selected {
+    background-color: rgb(231, 231, 167) !important;
+
+}
+
+.selected>span,
+.no-vecino>span {
+    color: black !important;
+}
+
+.no-vecino {
+    background-color: rgb(235, 121, 121) !important;
+}
+
+
+
+.validar {
+    opacity: 0;
+}
