@@ -4,10 +4,12 @@ let result = document.getElementById("result");
 let validate = document.getElementById("validar");
 let fiveCounter = 0;
 let sixCounter = 0;
-
+let p = document.getElementById("points");
 let max = 6;
 let min = 5;
 
+let aciertos = 0;
+let puntos = 5;
 let ids = []
 
 
@@ -38,6 +40,17 @@ function getRandomInt() {
 
     return mult;
 
+}
+
+
+function calcPoints(){
+    if(aciertos<5){
+        return puntos * 1;
+    }else if(aciertos>5){
+        return puntos * 1.5
+    }else{
+        return puntos * 1.8
+    }
 }
 
 
@@ -233,10 +246,39 @@ function check(n1, n2, n3) {
 
     if(firstRes == value || secondRes == value){
         console.log("Resultado Valido!");
+        let points = calcPoints();
+        showModal("correcte");
+        var current = parseInt(p.textContent);
+        var newPoint = current + points;
+        p.textContent = newPoint;
+
     }else{
         console.log("Resultado no valido!")
+         showModal("incorrecte");
     }
 
+}
+
+function showModal(status){
+    let modal = document.getElementById("modal");
+    let checker = document.getElementById("checker");
+    checker.textContent = status.toUpperCase();
+    switch (status) {
+        case "correcte":
+            checker.style.color = "green";
+            break;
+        case "incorrecte":
+            checker.style.color = "red";
+        default:
+            break;
+    }
+
+    modal.classList.add("shown");
+
+    setTimeout(()=>{
+        modal.classList.remove("shown");
+        generateNew();
+    },2000);
 }
 
 
