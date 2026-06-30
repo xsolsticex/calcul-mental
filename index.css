@@ -162,6 +162,7 @@ button {
     }
 
     .subcontent {
+        width: 90%;
         flex-direction: column;
         align-items: center;
         gap: 20px;
