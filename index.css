@@ -28,12 +28,35 @@ h1 {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+
 }
+
+
+
+.vidas {
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    top: 50px;
+    left: 50;
+    right: 50;
+    transform: translateX(-50);
+    
+
+}
+
+img{
+    width: 30px;
+    height: 30px;
+}
+
+
 
 .result {
     border: 1px solid black;
     width: min(95vw, 700px);
     height: 8%;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,7 +134,7 @@ button {
     opacity: 0;
 }
 
-.reiniciar{
+.reiniciar {
     display: none;
     visibility: visible;
 }
@@ -234,5 +257,10 @@ button {
 }
 
 .points {
+    position: relative;
+    display: flex;
+    justify-content: center;
     font-size: 32px;
+    width: 100%;
+    
 }
