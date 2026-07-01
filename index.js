@@ -276,7 +276,7 @@ function showModal(status) {
             checker.style.color = "red";
             break;
         case "fin":
-            status = "has perdido"
+            status = "has perdut"
             checker.textContent = status.toUpperCase();
             checker.style.color = "red";
         default:
