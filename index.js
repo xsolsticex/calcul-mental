@@ -161,10 +161,18 @@ function createTable(data) {
         element.classList.add("button")
         element.addEventListener("click", (data) => {
             let element = data.currentTarget;
+            validate.style.opacity = ids.length > 2 ? 1 : 0;
+            validate.style.display = ids.length < 3 ? "none" : "flex";
 
+            if (validate.style.display == "flex") {
+                validate.style.justifyContent = "center";
+                generateBtn.style.justifyContent = "center";
+
+            }
             if (element.classList.contains("selected")) {
                 element.classList.remove(["selected"]);
                 removeId(element.id);
+                updateValidateButton();
             } else {
                 element.classList.add("selected");
                 addId(element.id);
@@ -185,7 +193,7 @@ function createTable(data) {
                 if (ids.length > 2) {
                     console.log("Verificando C");
                     if (esVecino(ids[1], ids[2]) || esVecino(ids[0], ids[2])) {
-                        validate.style.opacity = ids.length > 2 ? 1 : 0;
+                       
 
                     } else {
                         element.classList.add("no-vecino");
@@ -198,6 +206,8 @@ function createTable(data) {
 
                     }
                 }
+
+                updateValidateButton();
 
 
             }
@@ -212,6 +222,31 @@ function createTable(data) {
     }
     table.appendChild(elements);
 
+}
+
+function updateValidateButton() {
+    const show = ids.length >= 3;
+
+    validate.style.display = show ? "flex" : "none";
+    validate.style.opacity = show ? "1" : "0";
+
+    if (show) {
+        validate.style.justifyContent = "center";
+        validate.style.alignItems = "center";
+    }
+}
+
+function updateGenerateButton() {
+    
+   const show = vidas.children.length > 0;
+
+    generateBtn.style.display = show ? "flex" : "none";
+    generateBtn.style.opacity = show ? "1" : "0";
+
+    if (show) {
+        generateBtn.style.justifyContent = "center";
+        generateBtn.style.alignItems = "center";
+    }
 }
 
 function esVecino(n1, n2) {
@@ -294,8 +329,10 @@ function showModal(status) {
             removeVida();
         }
 
-        validate.style.display = vidas.children.length === 0 ? "none" : "flex";
-        generateBtn.style.display = vidas.children.length === 0 ? "none" : "flex";
+        updateValidateButton();
+        updateGenerateButton();
+        //validate.style.display = vidas.children.length === 0 ? "none" : "flex";
+        //generateBtn.style.display = vidas.children.length === 0 ? "none" : "flex";
         reiniciar.style.display = vidas.children.length === 0 ? "flex" : "none";
 
         if (validate.style.display == "flex" && generateBtn.style.display == "flex") {
@@ -304,7 +341,7 @@ function showModal(status) {
 
         }
 
-        if(reiniciar.style.display == "flex"){
+        if (reiniciar.style.display == "flex") {
             reiniciar.style.justifyContent = "center";
         }
 
