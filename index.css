@@ -35,14 +35,11 @@ h1 {
 
 .vidas {
     position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 20px;
-    top: 50px;
-    left: 50;
-    right: 50;
-    transform: translateX(-50);
-    
-
 }
 
 img{
@@ -187,6 +184,11 @@ button {
         font-size: 2rem;
     }
 
+    .content {
+        gap: 15px;
+       
+    }
+
     .subcontent {
         width: 90%;
         flex-direction: column;
@@ -197,31 +199,50 @@ button {
     .left,
     .right {
         width: 100%;
-        height: auto;
         align-items: center;
     }
 
     .table {
         width: 100%;
-        gap: 8px;
+        gap: 4px;
     }
 
     .button {
-        padding: 8px;
-        font-size: 16px;
+        padding: 6px;
+        font-size: 14px;
     }
 
     button {
-        width: 90%;
-        max-width: 300px;
+        width: 100%;
+        max-width: 320px;
         font-size: 16px;
     }
 
     .result {
-        width: 90%;
+        width: 100%;
         height: 50px;
-        margin-bottom: 20px;
         font-size: 18px;
+        margin-bottom: 0;
+    }
+
+    .vidas {
+        position: static;
+        transform: none;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .points {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 24px;
+        
     }
 }
 
