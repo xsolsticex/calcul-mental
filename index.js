@@ -9,8 +9,8 @@ let p = document.getElementById("points");
 let max = 6;
 let min = 5;
 
-let audio = new Audio("/bubble.mp3");
-let notoques = new Audio("/notoques.mp3");
+let audio = new Audio("bubble.mp3");
+let notoques = new Audio("notoques.mp3");
 
 let aciertos = 0;
 let puntos = 5;
