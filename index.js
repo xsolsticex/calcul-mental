@@ -3,6 +3,7 @@ let generateBtn = document.getElementById("generate");
 let result = document.getElementById("result");
 let validate = document.getElementById("validar");
 let fiveCounter = 0;
+let reiniciar = document.getElementById("refresca");
 let sixCounter = 0;
 let p = document.getElementById("points");
 let max = 6;
@@ -43,12 +44,12 @@ function getRandomInt() {
 }
 
 
-function calcPoints(){
-    if(aciertos<5){
+function calcPoints() {
+    if (aciertos < 5) {
         return puntos * 1;
-    }else if(aciertos>5){
+    } else if (aciertos > 5) {
         return puntos * 1.5
-    }else{
+    } else {
         return puntos * 1.8
     }
 }
@@ -244,7 +245,7 @@ function check(n1, n2, n3) {
     let secondRes = (n1 * n2) - n3;
     let value = parseInt(result.textContent);
 
-    if(firstRes == value || secondRes == value){
+    if (firstRes == value || secondRes == value) {
         console.log("Resultado Valido!");
         let points = calcPoints();
         showModal("correcte");
@@ -252,14 +253,18 @@ function check(n1, n2, n3) {
         var newPoint = current + points;
         p.textContent = newPoint;
 
-    }else{
+    } else if (vidas.children.length > 1) {
         console.log("Resultado no valido!")
-         showModal("incorrecte");
+        showModal("incorrecte");
+    } else {
+        console.log("Resultado no valido!")
+        showModal("fin");
     }
+
 
 }
 
-function showModal(status){
+function showModal(status) {
     let modal = document.getElementById("modal");
     let checker = document.getElementById("checker");
     checker.textContent = status.toUpperCase();
@@ -269,18 +274,32 @@ function showModal(status){
             break;
         case "incorrecte":
             checker.style.color = "red";
+            break;
+        case "fin":
+            status = "has perdido"
+            checker.textContent = status.toUpperCase();
+            checker.style.color = "red";
         default:
             break;
     }
 
     modal.classList.add("shown");
 
-    setTimeout(()=>{
+    setTimeout(() => {
         modal.classList.remove("shown");
         generateNew();
-    },2000);
+        removeVida();
+        validate.style.visibility = vidas.children.length === 0 ? "hidden" : "visible";
+        generateBtn.style.visibility = vidas.children.length === 0 ? "hidden" : "visible";
+        reiniciar.style.visibility = vidas.children.length === 0 ? "visible" : "hidden";
+        
+    }, 2000);
 }
 
+
+reiniciar.addEventListener("click",()=>{
+    location.reload();
+})
 
 function generateNew() {
     ids = []
@@ -303,4 +322,18 @@ generateBtn.onclick = (() => {
 
 })
 
+let vidas = document.getElementById("vidas");
+
+let corazones = vidas.children;
+
+function removeVida() {
+    if (vidas.children.length > 0) {
+        vidas.lastElementChild.remove();
+    } else {
+        console.log("Ya has perdido");
+    }
+
+}
+
 generateNew();
+
