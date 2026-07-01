@@ -212,7 +212,7 @@ function createTable(data) {
 
                     } else {
                         element.classList.add("no-vecino");
-                        notoques.then(() => {
+                           notoques.play().then(() => {
                             console.log("Reproducción iniciada");
                         })
                             .catch((error) => {
