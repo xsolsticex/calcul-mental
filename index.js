@@ -190,7 +190,7 @@ function createTable(data) {
                     if (esVecino(ids[0], ids[1])) {
 
                     } else {
-                        notoques.then(() => {
+                        notoques.play().then(() => {
                             console.log("Reproducción iniciada");
                         })
                             .catch((error) => {
