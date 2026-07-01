@@ -9,6 +9,9 @@ let p = document.getElementById("points");
 let max = 6;
 let min = 5;
 
+let audio = new Audio("/bubble.mp3");
+let notoques = new Audio("/notoques.mp3");
+
 let aciertos = 0;
 let puntos = 5;
 let ids = []
@@ -160,10 +163,11 @@ function createTable(data) {
         element.id = index;
         element.classList.add("button")
         element.addEventListener("click", (data) => {
+            if (vidas.children.length == 0) return;
             let element = data.currentTarget;
             validate.style.opacity = ids.length > 2 ? 1 : 0;
             validate.style.display = ids.length < 3 ? "none" : "flex";
-
+            audio.play();
             if (validate.style.display == "flex") {
                 validate.style.justifyContent = "center";
                 generateBtn.style.justifyContent = "center";
@@ -181,6 +185,7 @@ function createTable(data) {
                     if (esVecino(ids[0], ids[1])) {
 
                     } else {
+                        notoques.play();
                         element.classList.add("no-vecino");
                         setTimeout(() => {
                             element.classList.remove("selected", "no-vecino");
@@ -193,10 +198,11 @@ function createTable(data) {
                 if (ids.length > 2) {
                     console.log("Verificando C");
                     if (esVecino(ids[1], ids[2]) || esVecino(ids[0], ids[2])) {
-                       
+
 
                     } else {
                         element.classList.add("no-vecino");
+                        notoques.play();
                         setTimeout(() => {
                             element.classList.remove("selected", "no-vecino");
                             removeId(element.id);
@@ -237,8 +243,8 @@ function updateValidateButton() {
 }
 
 function updateGenerateButton() {
-    
-   const show = vidas.children.length > 0;
+
+    const show = vidas.children.length > 0;
 
     generateBtn.style.display = show ? "flex" : "none";
     generateBtn.style.opacity = show ? "1" : "0";
