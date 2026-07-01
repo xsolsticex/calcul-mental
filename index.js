@@ -167,7 +167,12 @@ function createTable(data) {
             let element = data.currentTarget;
             validate.style.opacity = ids.length > 2 ? 1 : 0;
             validate.style.display = ids.length < 3 ? "none" : "flex";
-            audio.play();
+            audio.play().then(() => {
+                console.log("Reproducción iniciada");
+            })
+                .catch((error) => {
+                    console.error("No se pudo reproducir:", error);
+                });
             if (validate.style.display == "flex") {
                 validate.style.justifyContent = "center";
                 generateBtn.style.justifyContent = "center";
@@ -185,7 +190,12 @@ function createTable(data) {
                     if (esVecino(ids[0], ids[1])) {
 
                     } else {
-                        notoques.play();
+                        notoques.then(() => {
+                            console.log("Reproducción iniciada");
+                        })
+                            .catch((error) => {
+                                console.error("No se pudo reproducir:", error);
+                            });
                         element.classList.add("no-vecino");
                         setTimeout(() => {
                             element.classList.remove("selected", "no-vecino");
@@ -202,7 +212,12 @@ function createTable(data) {
 
                     } else {
                         element.classList.add("no-vecino");
-                        notoques.play();
+                        notoques.then(() => {
+                            console.log("Reproducción iniciada");
+                        })
+                            .catch((error) => {
+                                console.error("No se pudo reproducir:", error);
+                            });
                         setTimeout(() => {
                             element.classList.remove("selected", "no-vecino");
                             removeId(element.id);
