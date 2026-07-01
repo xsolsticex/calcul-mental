@@ -47,7 +47,7 @@ function getRandomInt() {
 function calcPoints() {
     if (aciertos < 5) {
         return puntos * 1;
-    } else if (aciertos > 5) {
+    } else if (aciertos < 8) {
         return puntos * 1.5
     } else {
         return puntos * 1.8
@@ -251,6 +251,7 @@ function check(n1, n2, n3) {
         showModal("correcte");
         var current = parseInt(p.textContent);
         var newPoint = current + points;
+        aciertos++;
         p.textContent = newPoint;
 
     } else if (vidas.children.length > 1) {
@@ -279,6 +280,7 @@ function showModal(status) {
             status = "has perdut"
             checker.textContent = status.toUpperCase();
             checker.style.color = "red";
+            break;
         default:
             break;
     }
@@ -288,16 +290,30 @@ function showModal(status) {
     setTimeout(() => {
         modal.classList.remove("shown");
         generateNew();
-        removeVida();
-        validate.style.visibility = vidas.children.length === 0 ? "hidden" : "visible";
-        generateBtn.style.visibility = vidas.children.length === 0 ? "hidden" : "visible";
-        reiniciar.style.visibility = vidas.children.length === 0 ? "visible" : "hidden";
-        
+        if (status == "incorrecte" || status == "has perdut") {
+            removeVida();
+        }
+
+        validate.style.display = vidas.children.length === 0 ? "none" : "flex";
+        generateBtn.style.display = vidas.children.length === 0 ? "none" : "flex";
+        reiniciar.style.display = vidas.children.length === 0 ? "flex" : "none";
+
+        if (validate.style.display == "flex" && generateBtn.style.display == "flex") {
+            validate.style.justifyContent = "center";
+            generateBtn.style.justifyContent = "center";
+
+        }
+
+        if(reiniciar.style.display == "flex"){
+            reiniciar.style.justifyContent = "center";
+        }
+
+
     }, 2000);
 }
 
 
-reiniciar.addEventListener("click",()=>{
+reiniciar.addEventListener("click", () => {
     location.reload();
 })
 
