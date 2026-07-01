@@ -132,6 +132,7 @@ button {
 
 .validar {
     opacity: 0;
+    display: none;
 }
 
 .reiniciar {
