@@ -390,3 +390,5 @@ function removeVida() {
 
 generateNew();
 
+console.log("Viewport:", window.innerHeight);
+console.log("Documento:", document.documentElement.scrollHeight);
