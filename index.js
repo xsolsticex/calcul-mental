@@ -2,16 +2,17 @@ let table = document.getElementById("table");
 let generateBtn = document.getElementById("generate");
 let result = document.getElementById("result");
 let validate = document.getElementById("validar");
-let fiveCounter = 0;
 let reiniciar = document.getElementById("refresca");
-let sixCounter = 0;
 let p = document.getElementById("points");
-let max = 6;
-let min = 5;
+
 
 let audio = new Audio("bubble.mp3");
 let notoques = new Audio("notoques.mp3");
 
+let fiveCounter = 0;
+let sixCounter = 0;
+let max = 6;
+let min = 5;
 let aciertos = 0;
 let puntos = 5;
 let ids = []
@@ -81,7 +82,7 @@ function shuffler(array) {
 }
 
 function generateNumbers() {
-    let list = [];
+    // let list = [];
     let result = "";
     fiveCounter = 0;
     sixCounter = 0;
@@ -106,12 +107,12 @@ function removeId(id) {
 }
 
 function addId(id) {
+    
     if (!ids.includes(id)) {
-        ids.push(id);
-        console.log(`Id añadida ${id}`);
+        ids.push(id);     
     }
+
     validate.style.opacity = ids.length > 2 ? 1 : 0;
-    console.log(ids)
 }
 
 function getColor(value) {
@@ -212,7 +213,7 @@ function createTable(data) {
 
                     } else {
                         element.classList.add("no-vecino");
-                           notoques.play().then(() => {
+                        notoques.play().then(() => {
                             console.log("Reproducción iniciada");
                         })
                             .catch((error) => {
